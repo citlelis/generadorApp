@@ -18,9 +18,6 @@ add_selectbox = st.sidebar.selectbox(
 )
 )
 
-
-
-
 try:
     genai.configure(api_key=st.session_state.app_key)
 except AttributeError as e:

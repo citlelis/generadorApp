@@ -53,12 +53,8 @@ with my_form:
     with col1:
         st.header("Datos Generales")
         titulo=st.text_input('Título de secuencia: ')
-        autor=st.text_input('Autor:')
-        adscripcion=st.text_input('Adscripción:')
         grado=st.text_input('Grado: ')
         nivel=st.text_input('Nivel educativo: ')
-        fecha_entrega=st.date_input(format="DD/MM/YYYY",label="Entrega")
-        fecha_aplicacion=st.date_input(format="DD/MM/YYYY",label="Aplicacion")
     with col2:
         st.header("Datos asignatura")
         materia=st.text_input('Materia')
@@ -66,7 +62,7 @@ with my_form:
         alumnos=st.number_input('Número de alumnos a los que se aplica:', min_value=1, step=1)
         sesiones=st.number_input('Número de sesiones:', min_value=1, step=1)
         horas=st.number_input('Duración por sesión: (hora/clase)',min_value=1,step=1)
-        metodologia=st.selectbox('Seleccione la metodología',("Gamificación","Aprendizaje Basado en Problemas"))
+        metodologia=st.selectbox('Seleccione la metodología',("Gamificación","Aprendizaje Basado en Problemas","Aula Invertida"))
               
     with col3:
         st.header("Personalización")
@@ -80,18 +76,16 @@ if submit:
         with st.spinner ( 'Espere mientras Gemini genera la respuesta...' ) :
             try :
                 prompt=(
-                f"Actua como docente genera una secuencia didáctica sobre {materia} para nivel {nivel} del grado {grado} "
+                f"Actua como docente de Bachillerato. Genera una secuencia didáctica para jóvenes entre 15 y 18 años, sobre {materia} para nivel {nivel} del grado {grado} "
                 f" con tema {tema} usando la metodología {metodologia}. "
-                " Deberás generar los siguientes apartados y nombrarlos como se indica en cada uno: "
-                " 1. Genera objetivos de la secuencia didáctica y nombralos Objetivos. "
-                " 2. Contenidos conceptuales que apoyará la secuencia y nómbralos como Conceptuales. "
-                " 3. Contenidos procedimentales que apoyará la secuencia y nombralos como Procedimentales. "
-                " 4. Contenidos actitudinales en el alumno que apoyará la secuencia y nombralos como  Actitudinales. "
-                " 5. Problema auténtico generador del proceso de enseñanza y aprendizaje (de contexto real o disciplinar y nombralo como Problema auténtico): "
-                " El orden en que deberás presentarla se te da a continuación y deberás dejar un renglón vacío entre cada uno de los apartados: "
+                " Deberás presentar la secuencia con los siguientes apartados y nombrarlos como se indica en cada uno: "
+                " 1. Genera 3 objetivos de la secuencia didáctica y nómbralos Objetivos. "
+                " 2. Genera 3 contenidos conceptuales que apoyará la secuencia y nómbralos Conceptuales. "
+                " 3. Genera 3 contenidos procedimentales que apoyará la secuencia y nómbralos como Procedimentales. "
+                " 4. Genera 3 contenidos actitudinales que deberá tener el alumno que apoyará la secuencia y nombralos como  Actitudinales. "
+                " 5. Genera el problema auténtico generador del proceso de enseñanza y aprendizaje (El problema deberá ser de contexto real o disciplinar). Deberás colocar el proceso detallado para solucionar el problema auténtico.  Nómbralo como Problema auténtico: "
+                " El orden en que deberás presentarla se te da a continuación: "
                 f" Título de la secuencia usando el texto: Título: {titulo}, "
-                f" Autores: {autor}, "
-                f" Adscripción: {adscripcion}. "
                 " Resumen: "
                 " Palabras clave:"
                 " Objetivos: "
