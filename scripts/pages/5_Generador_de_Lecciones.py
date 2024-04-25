@@ -1,6 +1,6 @@
 #APP PARA MIDIEMS
 #AUTOR: CILG AÑO: 2024
-#SECUENCIA DIDÁCTICA MODELO M2
+#GENERADOR DE LECCIONES GENÉRICO
 
 import streamlit as st
 import google.generativeai as genai
@@ -33,11 +33,11 @@ safety_settings = [
 ]
 
 #Configuración de página
-st.set_page_config(page_title="Secuencia Didáctica M2", page_icon="📃",layout="wide")
-st.markdown("# Generador de secuencias didácticas")
-st.sidebar.header("Generador de Secuencias Didácticas")
+st.set_page_config(page_title="Generador de Lecciones", page_icon="📃",layout="wide")
+st.markdown("# Generador de Lecciones (Genérico) ")
+st.sidebar.header("Generador de Lecciones (Genérico)")
 st.write(
-    """App para generar secuencias didácticas"""
+    """App para generar lecciones"""
 )
 
 try:
@@ -52,7 +52,7 @@ with my_form:
     col1,col2, col3=my_form.columns([1,1,1])
     with col1:
         st.header("Datos Generales")
-        titulo=st.text_input('Título de secuencia: ')
+        titulo=st.text_input('Título de la lección: ')
         grado=st.text_input('Grado: ')
         nivel=st.text_input('Nivel educativo: ')
     with col2:
@@ -76,23 +76,14 @@ if submit:
         with st.spinner ( 'Espere mientras Gemini genera la respuesta...' ) :
             try :
                 prompt=(
-                f"Actua como docente de Bachillerato. Genera una secuencia didáctica para jóvenes entre 15 y 18 años, sobre {materia} para nivel {nivel} del grado {grado} "
-                f" con tema {tema} usando la metodología {metodologia}. "
-                " Deberás presentar la secuencia con los siguientes apartados y nombrarlos como se indica en cada uno: "
-                " 1. Genera 3 objetivos de la secuencia didáctica y nómbralos Objetivos. "
-                " 2. Genera 3 contenidos conceptuales que apoyará la secuencia y nómbralos Conceptuales. "
-                " 3. Genera 3 contenidos procedimentales que apoyará la secuencia y nómbralos como Procedimentales. "
-                " 4. Genera 3 contenidos actitudinales que deberá tener el alumno que apoyará la secuencia y nombralos como  Actitudinales. "
-                " 5. Genera el problema auténtico generador del proceso de enseñanza y aprendizaje (El problema deberá ser de contexto real o disciplinar). Deberás colocar el proceso detallado para solucionar el problema auténtico.  Nómbralo como Problema auténtico: "
-                " El orden en que deberás presentarla se te da a continuación: "
-                f" Título de la secuencia usando el texto: Título: {titulo}, "
-                " Resumen: "
-                " Palabras clave:"
-                " Objetivos: "
-                " Contenidos Conceptuales: "
-                " Contenidos Procedimentales: "
-                " Contenidos Actitudinales: "
-                " Problema Auténtico: "
+                f"Actua como docente de Bachillerato. Crea un plan de lección para enseñar una lección de {tema}, para jóvenes entre 15 y 18 años, para nivel {nivel} del grado {grado} "
+                f" usando la metodología {metodologia}. Esto es lo que debería cubrir: "
+                " Objetivos: ¿Qué se espera que los estudiantes aprendan al final de la lección? "
+                " Materiales: listas de recursos necesarios para la lección."
+                " Introducción: una breve descripción para involucrar a los estudiantes."
+                " Procedimeinto: Actividades paso a paso que se llevarán a acabo para lograr los objetivos de la lección. " 
+                " Evaluación: Genera un cuestionario para evaluar si se han cumplido los objetivos."
+                " Conclusión: un resumen de la lección con los puntos clave. "
                 )
                 st.write('Prompt completo: ' + prompt)
 

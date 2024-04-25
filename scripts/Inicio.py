@@ -29,6 +29,7 @@ st.markdown(
     """
     App para el Docente es una aplicación que le permite generar diversos
     materiales para su actividad.          
+    **👈 Seleccione una opción** 
    
     ### ¿Desea aprender más?
     - Nuestro sitio web [streamlit.io](https://streamlit.io)
