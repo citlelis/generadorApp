@@ -1,1 +1,0 @@
-vector_store.save_local("faiss_index")
