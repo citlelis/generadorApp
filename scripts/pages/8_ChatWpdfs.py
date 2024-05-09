@@ -23,8 +23,8 @@ try:
 except AttributeError as e:
     st.warning("Introduzca primero su clave API")
 modelai=genai.GenerativeModel('gemini-pro')
-
 os.environ['GOOGLE_API_KEY']=st.session_state.app_key
+
 def get_pdf_text(pdf_docs):
     text=" "
     for pdf in pdf_docs:
@@ -34,14 +34,15 @@ def get_pdf_text(pdf_docs):
     return text
 
 def get_text_chunks(text):
-    text_splitter=RecursiveCharacterTextSplitter(chunk_size=10000, chunk_overlap=1000)
+    text_splitter=RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
     chunks=text_splitter.split_text(text)
     return chunks
 
 def get_vector_store(text_chunks):
     embeddings=GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-    vector_store=FAISS.from_texts(text_chunks,embedding=embeddings)
-    vector_store.save_local("faiss_index")
+    vector_store=FAISS.from_texts(text_chunks,embeddings)
+    vector_store.save_local("index")
+    
 
 def get_conversational_chain():
     prompt_template=""" 
@@ -59,7 +60,7 @@ def get_conversational_chain():
 
 def user_input(user_question):
     embeddings=GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-    new_db=FAISS.load_local("faiss_index",embeddings, allow_dangerous_deserialization=True)
+    new_db=FAISS.load_local("index",embeddings, allow_dangerous_deserialization=True)
     docs=new_db.similarity_search(user_question)
     chain=get_conversational_chain()
 
