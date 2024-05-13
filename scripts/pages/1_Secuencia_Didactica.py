@@ -53,11 +53,11 @@ with my_form:
     with col1:
         st.header("Datos Generales")
         titulo=st.text_input('Título de secuencia: ')
-        grado=st.text_input('Grado: ')
-        nivel=st.text_input('Nivel educativo: ')
+        grado=st.text_input('Grado: ', value= "Primero")
+        nivel=st.text_input('Nivel educativo: ', value= "Preparatoria")
     with col2:
         st.header("Datos asignatura")
-        materia=st.text_input('Materia')
+        materia=st.text_input('Materia', value="Física")
         tema=st.text_input('Tema')
         alumnos=st.number_input('Número de alumnos a los que se aplica:', min_value=1, step=1)
         sesiones=st.number_input('Número de sesiones:', min_value=1, step=1)

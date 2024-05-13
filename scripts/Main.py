@@ -12,12 +12,6 @@ if "app_key" not in st.session_state:
     if app_key:
         st.session_state.app_key=app_key
 
-add_selectbox = st.sidebar.selectbox(
-    "Mi Institución",
-    (
-    ("Colegio de Ciencias y Humanidades", "Escuela Nacional Preparatoria")
-)
-)
 
 try:
     genai.configure(api_key=st.session_state.app_key)
@@ -27,17 +21,7 @@ model=genai.GenerativeModel('gemini-pro')
 
 st.markdown(
     """
-    App para el Docente es una aplicación que le permite generar diversos
-    materiales para su actividad.          
-   
-    ### ¿Desea aprender más?
-    - Nuestro sitio web [streamlit.io](https://streamlit.io)
-    - Nuestra documentación [documentation](https://docs.streamlit.io)
-    - Pregunte en nuestra comunidad [community
-        forums](https://discuss.streamlit.io)
-    ### Ejemplos
-    - Materiales de otros docentes[analyze the Udacity Self-driving Car Image
-        Dataset](https://github.com/streamlit/demo-self-driving)
-    - Explore [New York City rideshare dataset](https://github.com/streamlit/demo-uber-nyc-pickups)
-"""
-)
+    Aplicación que le permite generar diversos
+    materiales para su actividad educativa.          
+    """
+    )

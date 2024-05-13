@@ -76,14 +76,18 @@ if submit:
         with st.spinner ( 'Espere mientras Gemini genera la respuesta...' ) :
             try :
                 prompt=(
-                f"Actua como docente de Bachillerato. Crea un plan de lección para enseñar una lección de {tema}, para jóvenes entre 15 y 18 años, para nivel {nivel} del grado {grado} "
-                f" usando la metodología {metodologia}. Esto es lo que debería cubrir: "
-                " Objetivos: ¿Qué se espera que los estudiantes aprendan al final de la lección? "
-                " Materiales: listas de recursos necesarios para la lección."
-                " Introducción: una breve descripción para involucrar a los estudiantes."
-                " Procedimeinto: Actividades paso a paso que se llevarán a acabo para lograr los objetivos de la lección. " 
-                " Evaluación: Genera un cuestionario para evaluar si se han cumplido los objetivos."
-                " Conclusión: un resumen de la lección con los puntos clave. "
+                f"Actua como docente de Bachillerato. Diseña una clase sobre {tema}, para alumnos de entre 15 y 18 años, de nivel {nivel} del grado {grado},"
+                f" usando la metodología {metodologia}. El esquema detallado para el plan de lección es: "
+                " Objetivos: Identificar claramente lo que se espera que los estudiantes aprendan al final de la lección. "
+                " Establecer metas alcanzables y relevantes para su nivel y grado académico. "
+                " Materiales: Enumerar todos los recursos necesarios para llevar a cabo la lección de manera efectiva."
+                " Introducción: Proporcionar una descripción atractiva del tema para captar el interés de los estudiantes y "
+                " Relacionar el tema con experiencias previas o situaciones del mundo real para una mejor comprensión."
+                " Procedimeinto: Desglosar las actividades paso a paso que se llevarán a cabo para lograr los objetivos de la lección e  "
+                " Incluir métodos de enseñanza interactivos y variados para mantener el compromiso y la participación de los estudiantes." 
+                " Evaluación: Diseñar un cuestionario que evalúe de manera efectiva si se han alcanzado los objetivos de aprendizaje."
+                " e incluir  en dicho cuestionario una combinación de preguntas de opción múltiple, verdadero o falso, y preguntas abiertas para evaluar diferentes niveles de comprensión."
+                " Conclusión: un resumen de la lección con los puntos clave y su relevancia para el aprendizaje futuro. "
                 )
                 st.write('Prompt completo: ' + prompt)
 

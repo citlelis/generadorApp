@@ -2,11 +2,13 @@ import streamlit as st
 import os
 import google.generativeai as genai
 from PyPDF2 import PdfReader
+from langchain.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
 from langchain_community.vectorstores import FAISS
 from langchain.chains.question_answering import load_qa_chain
 from langchain.prompts import PromptTemplate
+
 
 
 st.set_page_config(page_title="Chatea con PDF's", page_icon="📃",layout="wide")
@@ -16,7 +18,10 @@ st.write(
     """Chat with PDF's"""
 )
 with st.sidebar:
-    pdf_docs=st.file_uploader("upload your PDF")
+    #pdf_docs=st.file_uploader("upload your PDF")
+    pdf_path='<pdf_path>'
+    loader=PyPDFLoader(file_path=pdf_path)
+    doc=loader.load()
 
 try:
    genai.configure(api_key=st.session_state.app_key)
@@ -25,23 +30,23 @@ except AttributeError as e:
 modelai=genai.GenerativeModel('gemini-pro')
 os.environ['GOOGLE_API_KEY']=st.session_state.app_key
 
-def get_pdf_text(pdf_docs):
+def get_pdf_text(doc):
     text=" "
-    for pdf in pdf_docs:
+    for pdf in doc:
         pdf_reader=PdfReader(pdf)
         for page in pdf_reader.pages:
             text+=page.extract_text()
     return text
 
 def get_text_chunks(text):
-    text_splitter=RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+    text_splitter=RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
     chunks=text_splitter.split_text(text)
     return chunks
 
 def get_vector_store(text_chunks):
     embeddings=GoogleGenerativeAIEmbeddings(model="models/embedding-001")
     vector_store=FAISS.from_texts(text_chunks,embeddings)
-    vector_store.save_local("index")
+    vector_store.save_local(folder_path="./", index_name="faiss_index")
     
 
 def get_conversational_chain():
@@ -60,7 +65,7 @@ def get_conversational_chain():
 
 def user_input(user_question):
     embeddings=GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-    new_db=FAISS.load_local("index",embeddings, allow_dangerous_deserialization=True)
+    new_db=FAISS.load_local(r"index",embeddings, allow_dangerous_deserialization=True)
     docs=new_db.similarity_search(user_question)
     chain=get_conversational_chain()
 
