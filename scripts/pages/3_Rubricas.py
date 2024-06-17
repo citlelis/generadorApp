@@ -61,6 +61,7 @@ with my_form:
     tema=st.text_input('Tema')
     recurso=st.text_input('Tipo de recurso didáctico:')
     items=st.number_input('Número de criterios de evaluación:', min_value=1, step=1)
+    escala=st.number_input('Escala a incluir: ',value=5)
     puntajeTotal=st.number_input('Puntaje total que desea distribuir',min_value=1,step=1)      
     submit= st.form_submit_button('Generar')
 #Fin forma
@@ -71,8 +72,8 @@ if submit:
         with st.spinner ( 'Espere mientras Gemini genera la respuesta...' ) :
             try :
                 prompt=(
-                f"Genera  una rúbrica para evaluar lo siguiente: {recurso}. La materia es {materia} para nivel {nivel} del grado {grado} "
-                f" con tema {tema}. El total de criterios de evaluación que deberá tener la rúbrica es {items} y el puntaje a distribuir equitativamente es {puntajeTotal}. Deberás agregar una breve descripción de los criterios de evaluación. No coloques título.")
+                f"Actúa como docente experto y creador de planes de estudio, hábil en la creación de evaluaciones. Genera  una rúbrica para evaluar {recurso} de mi clase de nivel {nivel} del grado {grado} y de la materia {materia}. "
+                f" con tema {tema}. El total de criterios de evaluación que deberá tener la rúbrica es {items}, con una escala de {escala} puntos y el puntaje a distribuir equitativamente es {puntajeTotal}. formatea como tabla")
                 st.write('Prompt completo: ' + prompt)
 
                 response = model.generate_content(prompt, safety_settings=safety_settings,stream=True,
@@ -82,7 +83,7 @@ if submit:
                                                   )
              
                 for chunk in response:
-                    st.markdown(chunk.text)        
+                    st.write(chunk.text)        
             except Exception as e :
                 st.error ( 'Ha ocurrido un error con el siguiente mensaje: ' )
                 st.write(e)
