@@ -69,14 +69,16 @@ with my_form:
     submit= st.form_submit_button('Generar')
 #Fin forma
 
+data=""
+
 #Se ha presionado en botón de Generar
 if submit:
     with st.container () :
         with st.spinner ( 'Espere mientras Gemini genera la respuesta...' ) :
             try :
                 prompt=(
-                f"Actua como docente de Bachillerato. Genera una secuencia didáctica para jóvenes entre 15 y 18 años, sobre {materia} para nivel {nivel} del grado {grado} "
-                f" con tema {tema} usando la metodología de Aula invertida. "
+                f"Actua como docente experto, hábil en crear experiencias de aprendizaje emocionantes para tus estudiantes que inclulcan información de manera efectiva. Genera una secuencia didáctica para jóvenes entre 15 y 18 años, de la asignatura {materia}  con el tema {tema} para nivel {nivel} del grado {grado},"
+                f" deberás usar la metodología de Aula invertida. "
                 " Deberás presentar la secuencia con los siguientes apartados y nombrarlos como se indica en cada uno: "
                 " 1. Genera 3 objetivos de la secuencia didáctica y nómbralos Objetivos. "
                 " 2. Genera 3 contenidos conceptuales que apoyará la secuencia y nómbralos Conceptuales. "
@@ -93,7 +95,7 @@ if submit:
                 " Contenidos Procedimentales: "
                 " Contenidos Actitudinales: "
                 " Problema Auténtico: "
-                f" Al final deberás colocar las actividades a realizar antes, durante y después de la lección y las actividades a realizar en cada una de las {sesiones} sesiones."
+                f" Al final deberás colocar las actividades a realizar antes, durante y después de la lección y las actividades a realizar en cada una de las {sesiones} sesiones y distribuyendo el tiempo por sesión que sera de {horas} horas por sesión."
                 )
                 st.write('Prompt completo: ' + prompt)
 
@@ -103,7 +105,9 @@ if submit:
                                                   temperature=0.7)
                                                   )
                 for chunk in response:
-                    st.markdown ( chunk.text )                
+                    data+= chunk.text
+                st.markdown(data)        
+                    #st.markdown ( chunk.text )                
             except Exception as e :
                 st.error ( 'Ha ocurrido un error con el siguiente mensaje: ' )
                 st.write(e)
