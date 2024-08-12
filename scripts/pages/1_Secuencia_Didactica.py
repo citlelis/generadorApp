@@ -49,7 +49,7 @@ model=genai.GenerativeModel('gemini-pro')
 #Forma
 my_form=st.form(key='form-1', border=True)
 with my_form:
-    col1,col2=my_form.columns([1,1])
+    col1,col2, col3=my_form.columns([1,1,1])
     with col1:
         st.header("Datos Generales")
         titulo=st.text_input('Título de secuencia: ')
@@ -63,7 +63,10 @@ with my_form:
         sesiones=st.number_input('Número de sesiones:', min_value=1, step=1)
         horas=st.number_input('Duración por sesión: (hora/clase)',min_value=1,step=1)
         metodologia=st.selectbox('Seleccione la metodología',("Gamificación","Aprendizaje Basado en Problemas","Aula Invertida"))
-                     
+    with col3:
+        st.header("Personalización")
+        competencia=st.text_area('Escriba brevemente la competencia que debe adquirir el estudiante')
+        aprend_esperado=st.text_input('Escriba brevemente el aprendizaje esperado')
     submit= st.form_submit_button('Generar')
 #Fin forma
 
@@ -75,23 +78,33 @@ if submit:
         with st.spinner ( 'Espere mientras Gemini genera la respuesta...' ) :
             try :
                 prompt=(
-                f"Actua como docente experto de Bachillerato, hábil creando experiencias de aprendizaje efectivas para los estudiantes. Genera una secuencia didáctica para jóvenes entre 15 y 18 años, de la materia {materia} con el tema {tema}, para nivel {nivel} del grado {grado}; "
-                f"  usando la metodología {metodologia}. La secuencia deberá ser apropiada a la edad y  atractiva. Deberás dividirla en {sesiones} y "
-                " Deberás presentar la secuencia con los siguientes apartados y nombrarlos como se indica en cada uno: "
-                " 1. Genera 3 objetivos de la secuencia didáctica y nómbralos Objetivos. "
-                " 2. Genera 3 contenidos conceptuales que apoyará la secuencia y nómbralos Conceptuales. "
-                " 3. Genera 3 contenidos procedimentales que apoyará la secuencia y nómbralos como Procedimentales. "
-                " 4. Genera 3 contenidos actitudinales que deberá tener el alumno que apoyará la secuencia y nombralos como  Actitudinales. "
-                " 5. Genera el problema auténtico generador del proceso de enseñanza y aprendizaje (El problema deberá ser de contexto real o disciplinar). Deberás colocar el proceso detallado para solucionar el problema auténtico.  Nómbralo como Problema auténtico: "
-                " El orden en que deberás presentarla se te da a continuación: "
-                f" Título de la secuencia usando el texto: Título: {titulo}, "
-                " Resumen: "
-                " Palabras clave:"
-                " Objetivos: "
-                " Contenidos Conceptuales: "
-                " Contenidos Procedimentales: "
-                " Contenidos Actitudinales: "
-                " Problema Auténtico: "
+                f" Como docente experto de Bachillerato, "
+                f" crea una secuencia didáctica para jóvenes entre 15 y 18 años, de la materia {materia}, "
+                f" sobre el tema {tema}, para nivel {nivel} del grado {grado},"
+                 " basada en la teoría del aprendizaje significativo de David Ausubel."
+                f" Usa la metodología {metodologia} " 
+                 " Asegúrate de: "
+                 " considerar las estructuras cognitivas previas, "
+                 " utiliza inclusores que conecten la nueva información con lo ya conocido, "
+                 " usar inclusores para conectar la nueva información con lo ya conocido,  "
+                 " proporcionar instrucciones claras para  el anclaje,  "
+                 " evalúa cómo la nueva información modifica la estructura cognitiva de los estudiantes, "
+                 f"estructura la secuencia en {sesiones} sesiones, cada una con inicio, desarrollo y cierre. "
+                 f" Si se han proporcionado, integra las siguientes competencias y aprendizajes esperados: "
+                 f" Competencias: {competencia}. "
+                 f" Aprendizaje esperado: {aprend_esperado}. "
+                  " Incluye un plan de evaluación formativa y sumativa. "
+                 " Presenta la secuencia con los siguientes apartados : "
+                f" Título de la secuencia: {titulo}, "
+                 " Resumen: "
+                 " Palabras clave:"
+                 " Contenidos Conceptuales: 3 elementos "
+                 " Contenidos Procedimentales: 3 elementos "
+                 " Contenidos Actitudinales: 3 elementos "
+                 " Cuestionario para activar conocimientos previos con 5 preguntas de exploración "
+                 " Problema Auténtico: Contextualizado en la Ciudad de México, significativo "
+                 " y detallado con el proceso de solución."
+                 " Plan de evaluación: "
                 )
                 st.write('Prompt completo: ' + prompt)
 
