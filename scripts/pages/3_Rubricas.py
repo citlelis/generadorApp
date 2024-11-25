@@ -72,7 +72,7 @@ if submit:
         with st.spinner ( 'Espere mientras Gemini genera la respuesta...' ) :
             try :
                 prompt=(
-                f"Actúa como docente experto y creador de planes de estudio, hábil en la creación de evaluaciones del trabajo del estudiante. Genera  una rúbrica para evaluar {recurso} de mi clase de nivel {nivel} del grado {grado} y de la materia {materia}. "
+                f"Actúa como docente experto en diseño instruccional, hábil en la creación de evaluaciones del trabajo del estudiante. Genera  una rúbrica para evaluar {recurso} de mi clase de nivel {nivel} del grado {grado} y de la materia {materia}. "
                 f" con tema {tema}. Formatea la rúbrica como tabla  una escala de {escala} puntos.")
                 st.write('Prompt completo: ' + prompt)
 

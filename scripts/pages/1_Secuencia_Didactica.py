@@ -67,6 +67,7 @@ with my_form:
         st.header("Personalización")
         competencia=st.text_area('Escriba brevemente la competencia que debe adquirir el estudiante')
         aprend_esperado=st.text_input('Escriba brevemente el aprendizaje esperado')
+        estilo_aprendizaje =st.selectbox('Seleccione el estilo de aprendizaje',("Activo o divergente", "Reflexivo o asimilador", "Teórico o convergente","Pragmático o acomodador"))
     submit= st.form_submit_button('Generar')
 #Fin forma
 
@@ -78,21 +79,22 @@ if submit:
         with st.spinner ( 'Espere mientras Gemini genera la respuesta...' ) :
             try :
                 prompt=(
-                f" Como docente experto de Bachillerato, "
-                f" crea una secuencia didáctica para jóvenes entre 15 y 18 años, de la materia {materia}, "
-                f" sobre el tema {tema}, para nivel {nivel} del grado {grado},"
+                 " Eres un docente experto de Bachillerato en México,"
+                 "habil en el diseño instruccional y el diseño de secuencias didácticas. " 
+                f" Crea una secuencia didáctica para jóvenes entre 15 y 18 años, de la materia {materia}, "
+                f" sobre el tema {tema}, para nivel {nivel} del grado {grado}, "
                  " basada en la teoría del aprendizaje significativo de David Ausubel."
                 f" Usa la metodología {metodologia} " 
                  " Asegúrate de: "
-                 " considerar las estructuras cognitivas previas, "
+                 " considerar las estructuras cognitivas previas del estudiante, "
                  " utiliza inclusores que conecten la nueva información con lo ya conocido, "
-                 " usar inclusores para conectar la nueva información con lo ya conocido,  "
                  " proporcionar instrucciones claras para  el anclaje,  "
                  " evalúa cómo la nueva información modifica la estructura cognitiva de los estudiantes, "
-                 f"estructura la secuencia en {sesiones} sesiones, cada una con inicio, desarrollo y cierre. "
-                 f" Si se han proporcionado, integra las siguientes competencias y aprendizajes esperados: "
+                 f" estructura la secuencia en {sesiones} sesiones, cada una con inicio, desarrollo y cierre. "
+                 f" Si se han proporcionado, integra las siguientes competencias, aprendizajes esperados y estilo de aprendizaje: "
                  f" Competencias: {competencia}. "
                  f" Aprendizaje esperado: {aprend_esperado}. "
+                 f" Estilo de aprendizaje: {estilo_aprendizaje}, de acuerdo con la teoría de Kolb."
                   " Incluye un plan de evaluación formativa y sumativa. "
                  " Presenta la secuencia con los siguientes apartados : "
                 f" Título de la secuencia: {titulo}, "
