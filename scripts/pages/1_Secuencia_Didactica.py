@@ -67,7 +67,7 @@ with my_form:
         st.header("Personalización")
         competencia=st.text_area('Escriba brevemente la competencia que debe adquirir el estudiante')
         aprend_esperado=st.text_input('Escriba brevemente el aprendizaje esperado')
-        estilo_aprendizaje =st.selectbox('Seleccione el estilo de aprendizaje',("Activo o divergente", "Reflexivo o asimilador", "Teórico o convergente","Pragmático o acomodador"))
+        estilo_aprendizaje =st.selectbox(' Seleccione el estilo de aprendizaje',("Activo o divergente", "Reflexivo o asimilador", "Teórico o convergente","Pragmático o acomodador"))
     submit= st.form_submit_button('Generar')
 #Fin forma
 
