@@ -44,7 +44,7 @@ try:
     genai.configure(api_key=st.session_state.app_key)
 except AttributeError as e:
     st.warning("Introduzca primero su clave API")
-model=genai.GenerativeModel('gemini-pro')
+model=genai.GenerativeModel('gemini-1.5-flash')
 
 #Forma
 my_form=st.form(key='form-1', border=True)
@@ -79,14 +79,17 @@ if submit:
         with st.spinner ( 'Espere mientras Gemini genera la respuesta...' ) :
             try :
                 prompt=(
-                 " Eres un docente experto de Bachillerato en México,"
-                 "habil en el diseño instruccional y el diseño de secuencias didácticas. " 
-                f" Crea una secuencia didáctica para jóvenes entre 15 y 18 años, de la materia {materia}, "
-                f" sobre el tema {tema}, para nivel {nivel} del grado {grado}, "
-                 " basada en la teoría del aprendizaje significativo de David Ausubel."
-                f" Usa la metodología {metodologia} " 
-                 " Asegúrate de: "
-                 " considerar las estructuras cognitivas previas del estudiante, "
+                 " Eres un docente de Bachillerato en México,"
+                 " experto en el diseño instruccional y hábil en el diseño de secuencias didácticas, " 
+                 " y con amplio conocimiento de la teoría  de aprendizaje significativo de David Ausubel. "
+                f" Debes generar una secuencia didáctica para jóvenes entre 15 y 18 años, de la materia {materia}, "
+                f" sobre el tema {tema}, para nivel {nivel} del grado {grado}. "
+                f" Usa la metodología {metodologia}.  " 
+                 " La secuencia didáctica debe estar diseñada bajo los principios del aprendizaje significativo, considerando los siguientes elementos: "
+                 " Incluye una actividad introductoria que funcione como organizador previo, permitiendo a los estudiantes conectar el nuevo conocimiento con sus ideas o experiencias previas, "
+                 " Diseña actividades que permitan a los estudiantes activar y relacionar sus conocimientos previos con el nuevo contenido, facilitando la asimilación significativa, "
+                 " Estructura el contenido de manera que se presente desde lo más general y simple hacia lo más específico y complejo, permitiendo una comprensión gradual y profunda, "
+                 " Incluye actividades que fomenten la integración de conceptos, promoviendo la comparación, el contraste y la síntesis de ideas para lograr una comprensión holística, "
                  " utiliza inclusores que conecten la nueva información con lo ya conocido, "
                  " proporcionar instrucciones claras para  el anclaje,  "
                  " evalúa cómo la nueva información modifica la estructura cognitiva de los estudiantes, "
@@ -95,7 +98,8 @@ if submit:
                  f" Competencias: {competencia}. "
                  f" Aprendizaje esperado: {aprend_esperado}. "
                  f" Estilo de aprendizaje: {estilo_aprendizaje}, de acuerdo con la teoría de Kolb."
-                  " Incluye un plan de evaluación formativa y sumativa. "
+                  " Incluye un plan de evaluación formativa y sumativa que permitan verificar una comprensión significativa del tema. "
+                  " La secuencia didáctica debe ser clara, estructurada y adaptada al nivel cognitivo y emocional de los estudiantes, promoviendo su participación activa y colaborativa así como el desarrollo de habilidades de pensamiento crítico y reflexivo."
                  " Presenta la secuencia con los siguientes apartados : "
                 f" Título de la secuencia: {titulo}, "
                  " Resumen: "
