@@ -17,7 +17,7 @@ try:
     genai.configure(api_key=st.session_state.app_key)
 except AttributeError as e:
     st.warning("Introduzca primero su clave API")
-model=genai.GenerativeModel('gemini-1.5-flash')
+model=genai.GenerativeModel('gemini-2.0-flash')
 
 st.markdown(
     """

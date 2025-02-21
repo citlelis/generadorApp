@@ -44,7 +44,7 @@ try:
     genai.configure(api_key=st.session_state.app_key)
 except AttributeError as e:
     st.warning("Introduzca primero su clave API")
-model=genai.GenerativeModel('gemini-1.5-flash')
+model=genai.GenerativeModel('gemini-2.0-flash')
 
 #Forma
 my_form=st.form(key='form-1', border=True)
@@ -59,6 +59,7 @@ with my_form:
         st.header("Datos asignatura")
         materia=st.text_input('Materia', value="Física")
         tema=st.text_input('Tema')
+        situacion=st.text_input('Situación problemática')
         #alumnos=st.number_input('Número de alumnos a los que se aplica:', min_value=1, step=1)
         sesiones=st.number_input('Número de sesiones:', min_value=1, step=1)
         horas=st.number_input('Duración por sesión: (hora/clase)',min_value=1,step=1)
@@ -83,7 +84,7 @@ if submit:
                  " experto en el diseño instruccional y hábil en el diseño de secuencias didácticas, " 
                  " y con amplio conocimiento de la teoría  de aprendizaje significativo de David Ausubel. "
                 f" Debes generar una secuencia didáctica para jóvenes entre 15 y 18 años, de la materia {materia}, "
-                f" sobre el tema {tema}, para nivel {nivel} del grado {grado}. "
+                f" sobre el tema {tema}, para nivel {nivel} del grado {grado}, la situación problemática será {situacion}. "
                 f" Usa la metodología {metodologia}.  " 
                  " La secuencia didáctica debe estar diseñada bajo los principios del aprendizaje significativo, considerando los siguientes elementos: "
                  " Incluye una actividad introductoria que funcione como organizador previo, permitiendo a los estudiantes conectar el nuevo conocimiento con sus ideas o experiencias previas, "
