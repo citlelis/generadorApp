@@ -60,7 +60,7 @@ with my_form:
         materia=st.text_input('Materia')
         tema=st.text_input('Tema')
         alumnos=st.number_input('Número de alumnos a los que se aplica:', min_value=1, step=1)
-        metodologia=st.selectbox('Seleccione la metodología',("Gamificación","Aprendizaje Basado en Problemas","Aula Invertida"))
+        metodologia=st.selectbox('Seleccione la metodología',("Gamificación","Aprendizaje Basado en Problemas","Aula Invertida", "Constructivista"))
               
     with col3:
         st.header("Personalización")
