@@ -48,7 +48,7 @@ try:
     genai.configure(api_key=st.session_state.app_key)
 except AttributeError as e:
     st.warning("Introduzca primero su clave API")
-model=genai.GenerativeModel('gemini-pro')
+model=genai.GenerativeModel('gemini-2.0-flash')
 
 #Forma
 my_form=st.form(key='form-1', border=True)
@@ -70,7 +70,7 @@ if submit:
         with st.spinner ( 'Espere mientras Gemini genera la respuesta...' ) :
             try :
                 prompt=(
-                f"Actúa como docente experto y diseñador instruccional, hábil en la creación de contenido educativo atractivo que logra eficazmente os objetivos de aprendizaje. Genera el contenido para una presentación en diapositivas sobre el  {tema} de la asignatura {materia}. "
+                f"Actúa como docente experto y diseñador instruccional', hábil en la creación de contenido educativo atractivo que logra eficazmente os objetivos de aprendizaje. Genera el contenido para una presentación en diapositivas sobre el  {tema} de la asignatura {materia}. "
                 f" para mi clase de {nivel} y grado {grado}. Las diapositivas deben estar formateadas con encabezado y luego un conjunto de viñetas para cada diapositiva. Varía el contenido de cada diapositiva, inlcuyendo preguntas para los estudiantes y actividades."
                 "La última diapositiva debe incluir un texto para una evaluación formativa. También incluye una descripción de cualquier imagen que deba ser incluida en la diapositiva.")
                 st.write('Prompt completo: ' + prompt)

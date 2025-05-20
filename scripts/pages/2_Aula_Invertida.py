@@ -44,7 +44,7 @@ try:
     genai.configure(api_key=st.session_state.app_key)
 except AttributeError as e:
     st.warning("Introduzca primero su clave API")
-model=genai.GenerativeModel('gemini-pro')
+model=genai.GenerativeModel('gemini-2.0-flash')
 
 #Forma
 my_form=st.form(key='form-1', border=True)

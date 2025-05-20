@@ -27,7 +27,7 @@ try:
     genai.configure(api_key=st.session_state.app_key)
 except AttributeError as e:
     st.warning("Introduzca primero su clave API")
-model=genai.GenerativeModel('gemini-pro')
+model=genai.GenerativeModel('gemini-2.0-flash')
 if "chat" not in st.session_state:
     st.session_state.chat = model.start_chat( history = [])
 st.title("Mi Asistente")

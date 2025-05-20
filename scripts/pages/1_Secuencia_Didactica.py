@@ -87,7 +87,7 @@ if submit:
                 f" sobre el tema {tema}, para nivel {nivel} del grado {grado}, la situación problemática será {situacion}. "
                 f" Usa la metodología {metodologia}.  " 
                  " La secuencia didáctica debe estar diseñada bajo los principios del aprendizaje significativo, considerando los siguientes elementos: "
-                 " Incluye una actividad introductoria que funcione como organizador previo, permitiendo a los estudiantes conectar el nuevo conocimiento con sus ideas o experiencias previas, "
+                 " Incluye un organizador previo que será un párrafo que permita a los estudiantes conectar el nuevo conocimiento con sus ideas o experiencias previas, "
                  " Diseña actividades que permitan a los estudiantes activar y relacionar sus conocimientos previos con el nuevo contenido, facilitando la asimilación significativa, "
                  " Estructura el contenido de manera que se presente desde lo más general y simple hacia lo más específico y complejo, permitiendo una comprensión gradual y profunda, "
                  " Incluye actividades que fomenten la integración de conceptos, promoviendo la comparación, el contraste y la síntesis de ideas para lograr una comprensión holística, "
@@ -109,7 +109,7 @@ if submit:
                  " Contenidos Procedimentales: 3 elementos "
                  " Contenidos Actitudinales: 3 elementos "
                  " Cuestionario para activar conocimientos previos con 5 preguntas de exploración "
-                 " Problema Auténtico: Contextualizado en la Ciudad de México, significativo "
+                 " Problema Auténtico: Contextualizado, significativo "
                  " y detallado con el proceso de solución."
                  " Plan de evaluación: "
                 )
