@@ -63,7 +63,7 @@ with my_form:
         #alumnos=st.number_input('Número de alumnos a los que se aplica:', min_value=1, step=1)
         sesiones=st.number_input('Número de sesiones:', min_value=1, step=1)
         horas=st.number_input('Duración por sesión: (hora/clase)',min_value=1,step=1)
-        metodologia=st.selectbox('Seleccione la metodología',("Gamificación","Aprendizaje Basado en Problemas","Aula Invertida","Microaprendizaje"))
+        metodologia=st.selectbox('Seleccione la metodología',("Gamificación","Aprendizaje Basado en Problemas","Aula Invertida","Microaprendizaje "))
     with col3:
         st.header("Personalización")
         competencia=st.text_area('Escriba brevemente la competencia que debe adquirir el estudiante')
@@ -83,7 +83,7 @@ if submit:
                  " Eres un docente de Bachillerato en México,"
                  " experto en el diseño instruccional y hábil en el diseño de secuencias didácticas, " 
                  " y con amplio conocimiento de la teoría  de aprendizaje significativo de David Ausubel. "
-                f" Debes generar una secuencia didáctica para jóvenes entre 15 y 18 años, de la materia {materia}, "
+                f" Debes generar una secuencia didáctica para docentes entre 30 y 60 años, de la materia {materia}, "
                 f" sobre el tema {tema}, para nivel {nivel} del grado {grado}, la situación problemática será {situacion}. "
                 f" Usa la metodología {metodologia}.  " 
                  " La secuencia didáctica debe estar diseñada bajo los principios del aprendizaje significativo, considerando los siguientes elementos: "
