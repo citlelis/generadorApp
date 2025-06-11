@@ -63,7 +63,7 @@ with my_form:
         #alumnos=st.number_input('Número de alumnos a los que se aplica:', min_value=1, step=1)
         sesiones=st.number_input('Número de sesiones:', min_value=1, step=1)
         horas=st.number_input('Duración por sesión: (hora/clase)',min_value=1,step=1)
-        metodologia=st.selectbox('Seleccione la metodología',("Gamificación","Aprendizaje Basado en Problemas","Aula Invertida"))
+        metodologia=st.selectbox('Seleccione la metodología',("Gamificación","Aprendizaje Basado en Problemas","Aula Invertida","Microaprendizaje"))
     with col3:
         st.header("Personalización")
         competencia=st.text_area('Escriba brevemente la competencia que debe adquirir el estudiante')
