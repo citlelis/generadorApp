@@ -19,6 +19,7 @@ except AttributeError as e:
     st.warning("Introduzca primero su clave API")
 model=genai.GenerativeModel('gemini-2.0-flash')
 
+
 st.markdown(
     """
     Aplicación que le permite generar diversos
