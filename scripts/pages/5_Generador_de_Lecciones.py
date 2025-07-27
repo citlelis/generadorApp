@@ -48,7 +48,7 @@ st.write(
 
 if 'model' in st.session_state and st.session_state.model is not None:
     model = st.session_state.model
-
+l
 #Forma
 my_form=st.form(key='form-1', border=True)
 with my_form:
