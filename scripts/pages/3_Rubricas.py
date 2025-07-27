@@ -4,7 +4,6 @@
 
 import streamlit as st
 import google.generativeai as genai
-import pandas as pd
 
 
 
@@ -44,12 +43,13 @@ st.write(
     """App para generar Rúbricas"""
 )
 
-try:
-    genai.configure(api_key=st.session_state.app_key)
-except AttributeError as e:
-    st.warning("Introduzca primero su clave API")
-model=genai.GenerativeModel('gemini-2.0-flash')
-
+#try:
+#    genai.configure(api_key=st.session_state.app_key)
+#except AttributeError as e:
+#    st.warning("Introduzca primero su clave API")
+#model=genai.GenerativeModel('gemini-2.0-flash')
+if 'model' in st.session_state and st.session_state.model is not None:
+    model = st.session_state.model
 #Forma
 my_form=st.form(key='form-1', border=True)
 with my_form:

@@ -23,11 +23,15 @@ safety_settings = [
     },
 ]
 
-try:
-    genai.configure(api_key=st.session_state.app_key)
-except AttributeError as e:
-    st.warning("Introduzca primero su clave API")
-model=genai.GenerativeModel('gemini-2.0-flash')
+#try:
+#    genai.configure(api_key=st.session_state.app_key)
+#except AttributeError as e:
+#    st.warning("Introduzca primero su clave API")
+#model=genai.GenerativeModel('gemini-2.0-flash')
+
+if 'model' in st.session_state and st.session_state.model is not None:
+    model = st.session_state.model
+
 if "chat" not in st.session_state:
     st.session_state.chat = model.start_chat( history = [])
 st.title("Mi Asistente")

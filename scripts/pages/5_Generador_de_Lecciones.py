@@ -40,11 +40,14 @@ st.write(
     """App para generar lecciones"""
 )
 
-try:
-    genai.configure(api_key=st.session_state.app_key)
-except AttributeError as e:
-    st.warning("Introduzca primero su clave API")
-model=genai.GenerativeModel('gemini-pro')
+#try:
+#    genai.configure(api_key=st.session_state.app_key)
+#except AttributeError as e:
+#    st.warning("Introduzca primero su clave API")
+#model=genai.GenerativeModel('gemini-pro')
+
+if 'model' in st.session_state and st.session_state.model is not None:
+    model = st.session_state.model
 
 #Forma
 my_form=st.form(key='form-1', border=True)
